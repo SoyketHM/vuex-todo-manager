@@ -2,19 +2,26 @@
   <div>
     <h1>Todos</h1>
     <div class="todos">
-      <div class="todo" v-for="todo in allTodos" :key="todo.id">{{ todo.title }}</div>
+      <todo v-for="todo in allTodos" :key="todo.id" :todo="todo" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import Todo from './Todo.vue';
 
 export default {
   name: "Todos",
+  components: {
+    Todo,
+  },
+  methods: {
+    ...mapActions(['fetchTodos'])
+  }, 
   computed: {...mapGetters(["allTodos"])},
-  mounted() {
-    // console.log(this.allTodos);
+  created() {
+    this.fetchTodos();
   }
 };
 </script>
@@ -22,6 +29,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1 {
-  margin: 40px 0 0;
+  font-family: system-ui;
+  font-size: 100px;
+  color: tan;
+  font-weight: 100;
+  line-height: 25px;
+  margin-bottom: 50px;
+}
+.todos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1erm;
 }
 </style>
