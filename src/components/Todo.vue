@@ -1,7 +1,7 @@
 <template>
   <div class="todo" :class="{'completed':todo.completed}">
     <div>
-      <input type="checkbox" @change="isChecked" :checked="todo.completed ? true : false" ></todo>
+      <input type="checkbox" @change="isChecked" :checked="todo.completed ? true : false" >
       {{ todo.title }}
     </div>
     <span class="close" @click="deleteTodo(todo.id)">
@@ -28,15 +28,6 @@ export default {
 </script>
 
 <style scoped>
-/* .todoItem {
-  padding: 10px;
-  margin: 5px;
-  font-size: 25px;
-  width: 50%;
-  border-radius: 5px;
-  display: flex;
-  background: #f9f9f9;
-} */
 .todo{
     border: 1px solid #ccc;
     background: #609dd2;
