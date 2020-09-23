@@ -13,8 +13,9 @@ export default {
      removeTodo: (state, id) => state.todos = state.todos.filter(todo => todo.id != id),
   },
   actions: {
-    async fetchTodos({commit}) {
-      const response = await axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10");
+    async fetchTodos({commit}, limit=20) {
+      console.log(limit);
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
       commit('setTodos', response.data);
     },
 

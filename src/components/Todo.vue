@@ -1,6 +1,6 @@
 <template>
-  <div class="todo">
-    <div :class="{'completed':todo.completed}">
+  <div class="todo" :class="{'completed':todo.completed}">
+    <div>
       <input type="checkbox" @change="isChecked" :checked="todo.completed ? true : false" ></todo>
       {{ todo.title }}
     </div>
@@ -58,8 +58,9 @@ input {
   margin: 0 10px;
 }
 .completed {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
   color: silver;
+  background: #3e4e5f;
 }
 .close {
   font-size: 20px;
