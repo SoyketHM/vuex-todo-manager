@@ -1,5 +1,5 @@
 <template>
-    <div>        
+    <div class="addTodo">        
         <input type="text" placeholder="Add More Task" v-model="title" @keyup.enter="onEnter">
     </div>
 </template>
@@ -23,18 +23,24 @@ export default {
 }
 </script>
 
-<style scoped>    
-    input{
-        width: 40%;
-        padding: 20px 35px;
-        box-shadow: 1px 2px 12px 0px #ccc;
-        border: none;
-        font-size: 24px;
-        font-family: system-ui;
-        margin: 50px;
-    }
-    ::placeholder {
-        color: rgba(145, 145, 145, 0.719);
-        opacity: .5; /* Firefox */
-    }
+<style scoped> 
+.addTodo{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+}
+input{
+    width: 50%;
+    padding: 20px 35px;
+    box-shadow: 1px 2px 12px 0px #ccc;
+    border: none;
+    font-size: 24px;
+    font-family: system-ui;
+    margin: 50px;
+}
+::placeholder {
+    color: rgba(145, 145, 145, 0.719);
+    opacity: .5; /* Firefox */
+}
 </style>

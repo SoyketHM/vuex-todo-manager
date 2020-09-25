@@ -1,6 +1,6 @@
 <template>
   <div class="filterTodos">
-      <p>Filter Todos</p>
+      Filter Todos
       <select name="FilterTodos" id="" @change="selectLimit($event)">
           <option value="20">20</option>
           <option value="50">50</option>
@@ -29,6 +29,8 @@ export default {
 
 <style>
 .filterTodos{
+  margin: 0 auto;
+  max-width: 80%;
 }
 
 </style>

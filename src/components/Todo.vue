@@ -1,12 +1,15 @@
 <template>
-  <div class="todo" :class="{'completed':todo.completed}">
-    <div>
-      <input type="checkbox" @change="isChecked" :checked="todo.completed ? true : false" >
-      {{ todo.title }}
+  <div
+    class="todo"
+    @dblclick="isChecked(todo)"
+    :class="{ completed: todo.completed }"
+  >
+    <div class="item">
+      <p>{{ todo.title }}</p>
+      <span class="delete" @click="deleteTodo(todo.id)">
+        <i class="fas fa-trash-alt"></i>
+      </span>
     </div>
-    <span class="close" @click="deleteTodo(todo.id)">
-      X
-    </span>
   </div>
 </template>
 
@@ -19,41 +22,44 @@ export default {
     return { checkedValue: [] };
   },
   methods: {
-    ...mapActions(['deleteTodo']),
-    isChecked() {
-      this.todo.completed = !this.todo.completed;
+    ...mapActions(["updateTodo", "deleteTodo"]),
+    isChecked(todo) {
+      let updateTodo = {
+        id: todo.id,
+        title: todo.title,
+        completed: !todo.completed,
+      };
+      this.updateTodo(updateTodo);
     },
   },
 };
 </script>
 
 <style scoped>
-.todo{
-    border: 1px solid #ccc;
-    background: #609dd2;
-    padding: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: capitalize;
+.todo {
+  border: 2px solid #ccc;
+  background: #609dd2;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
 }
-p {
-  flex: 1;
-  text-align: left;
+.item {
+  display: flex;
+  justify-content: space-between;
 }
-
-input {
-  margin: 0 10px;
+p{
+  padding: 0 8px;
 }
 .completed {
-  /* text-decoration: line-through; */
   color: silver;
   background: #3e4e5f;
 }
-.close {
+.delete {
   font-size: 20px;
   font-weight: 700;
   color: tomato;
