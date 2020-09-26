@@ -20,7 +20,7 @@ export default {
   },
   actions: {
     async fetchTodos({commit}, limit=20) {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+      const response = await axios.get(`http://localhost:8000/api/todos?limit=${limit}`);
       commit('setTodos', response.data);
     },
 
@@ -29,18 +29,18 @@ export default {
         title,
         completed: false,
       };
-      const response = await axios.post("https://jsonplaceholder.typicode.com/todos", newTodo);
+      const response = await axios.post("http://localhost:8000/api/todos", newTodo);
       commit('newTodo', response.data);
     },
     
     async updateTodo({commit}, data) {
-      const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${data.id}`, data);
-      console.log(response.data);
+      const response = await axios.put(`http://localhost:8000/api/todos/${data.id}`, data);
+      console.log(response);
       commit('editTodo', response.data);
     },
     
     async deleteTodo({commit}, id) {
-      await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      await axios.delete(`http://localhost:8000/api/todos/${id}`)
       commit('removeTodo', id);
     }
   }
